@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 const RECIPES = [
   {
@@ -122,12 +123,18 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen bg-gray-50">
+    <main className="min-h-screen bg-gray-50 pb-20">
       {/* Header */}
       <header className="bg-white border-b border-gray-200 px-4 py-4">
-        <div className="max-w-2xl mx-auto">
-          <h1 className="text-2xl font-bold text-gray-900">🍽 What To Cook</h1>
-          <p className="text-sm text-gray-500 mt-0.5">Add ingredients you have → get recipe ideas</p>
+        <div className="max-w-2xl mx-auto flex items-center justify-between">
+          <div>
+            <h1 className="text-2xl font-bold text-gray-900">🍽 What To Cook</h1>
+            <p className="text-sm text-gray-500 mt-0.5">Add ingredients you have → get recipe ideas</p>
+          </div>
+          <nav className="flex items-center gap-4 text-sm">
+            <Link href="/explore" className="text-gray-500 hover:text-orange-500 transition">Explore</Link>
+            <Link href="/profile" className="text-gray-500 hover:text-orange-500 transition">Profile</Link>
+          </nav>
         </div>
       </header>
 
@@ -311,6 +318,32 @@ export default function Home() {
           </div>
         )}
       </div>
+
+      {/* Bottom Nav */}
+      <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-2">
+        <div className="max-w-2xl mx-auto flex justify-around">
+          <Link href="/" className="flex flex-col items-center gap-0.5 text-orange-500 py-1">
+            <span className="text-lg">🔍</span>
+            <span className="text-xs font-medium">Search</span>
+          </Link>
+          <Link href="/explore" className="flex flex-col items-center gap-0.5 text-gray-400 hover:text-orange-500 transition py-1">
+            <span className="text-lg">🧭</span>
+            <span className="text-xs">Explore</span>
+          </Link>
+          <Link href="/meal-planner" className="flex flex-col items-center gap-0.5 text-gray-400 hover:text-orange-500 transition py-1">
+            <span className="text-lg">📅</span>
+            <span className="text-xs">Planner</span>
+          </Link>
+          <Link href="/favourites" className="flex flex-col items-center gap-0.5 text-gray-400 hover:text-orange-500 transition py-1">
+            <span className="text-lg">❤️</span>
+            <span className="text-xs">Favourites</span>
+          </Link>
+          <Link href="/profile" className="flex flex-col items-center gap-0.5 text-gray-400 hover:text-orange-500 transition py-1">
+            <span className="text-lg">👤</span>
+            <span className="text-xs">Profile</span>
+          </Link>
+        </div>
+      </nav>
     </main>
   );
 }
